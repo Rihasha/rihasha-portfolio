@@ -268,7 +268,7 @@ export default function App() {
             <div className="contact-details">
               <div className="contact-item">
                 <span className="contact-icon">✉</span>
-                <a href="mailto:rihasha@email.com">rihasha@email.com</a>
+                <a href="mailto:rihashafdo@email.com">rihasha@email.com</a>
               </div>
               <div className="contact-item">
                 <span className="contact-icon">📍</span>
