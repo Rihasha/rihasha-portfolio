@@ -677,3 +677,17 @@ section { padding: 110px 8vw 90px; }
   .hero-socials { flex-direction: column; }
   .footer { flex-direction: column; text-align: center; }
 }
+.resume-btn {
+  display: inline-block;
+  margin-top: 20px;
+  background: rgba(67, 231, 209, 0.25);
+  color: black;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.resume-btn:hover {
+  background: rgba(45, 212, 191, 0.25);
+}
