@@ -22,6 +22,8 @@ const PROJECTS = [
     tags: ["React", "CSS3", "JavaScript"],
     featured: true,
     emoji: "🌐",
+    github: "https://github.com/Rihasha/rihasha-portfolio",
+    live: "https://rihasha-portfolio.vercel.app",
   },
   {
     number: "02",
@@ -29,6 +31,8 @@ const PROJECTS = [
     desc: "A full-stack expense management app with category filters, monthly summaries, and real-time balance updates backed by a Python REST API.",
     tags: ["Python", "FastAPI", "React", "MongoDB"],
     emoji: "💰",
+    github: "https://github.com/Rihasha/expense-tracker",
+    live: null,
   },
   {
     number: "03",
@@ -36,6 +40,8 @@ const PROJECTS = [
     desc: "A clean, responsive calculator with keyboard support, history log, and scientific mode, built with vanilla JavaScript and CSS Grid.",
     tags: ["HTML", "CSS", "JavaScript"],
     emoji: "🧮",
+    github: "https://github.com/Rihasha/calculator",
+    live: null,
   },
   {
     number: "04",
@@ -43,6 +49,8 @@ const PROJECTS = [
     desc: "A real-time GPS bus tracking platform with live map integration, route management, and ETA predictions for commuters.",
     tags: ["Python", "Django", "React", "SQL", "Maps API"],
     emoji: "🚌",
+    github: "https://github.com/Rihasha/gps-bus-tracking",
+    live: null,
   },
 ];
 
@@ -50,7 +58,7 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [animatedSkills, setAnimatedSkills] = useState(false);
-  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const [status, setStatus] = useState("idle");
   const formRef = useRef(null);
   const skillsRef = useRef(null);
 
@@ -88,7 +96,6 @@ export default function App() {
     setMenuOpen(false);
   };
 
-  // ✅ REAL EMAIL SEND with EmailJS
   const handleSend = async (e) => {
     e.preventDefault();
     setStatus("sending");
@@ -116,7 +123,7 @@ export default function App() {
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
           {NAV_LINKS.map((l) => (
             <li key={l}>
-              
+              <a
                 className={activeSection === l.toLowerCase() ? "active" : ""}
                 onClick={() => {
                   if (l === "Resume") {
@@ -154,16 +161,30 @@ export default function App() {
             FastAPI backends to React frontends.
           </p>
           <div className="hero-actions">
-            <button className="btn-primary" onClick={() => scrollTo("Projects")}>View Projects</button>
-            <button className="btn-ghost" onClick={() => scrollTo("Contact")}>Let's talk</button>
+            <button className="btn-primary" onClick={() => scrollTo("projects")}>View Projects</button>
+            <button className="btn-ghost" onClick={() => scrollTo("contact")}>Let's talk</button>
           </div>
           <div className="hero-socials">
-            <a href="https://www.linkedin.com/in/rihasha-fdo-658b6329b" target="_blank" rel="noreferrer" className="social-link">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <a
+              href="https://www.linkedin.com/in/rihasha-fdo-658b6329b"
+              target="_blank"
+              rel="noreferrer"
+              className="social-link"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
               LinkedIn
             </a>
-            <a href="https://github.com/Rihasha" target="_blank" rel="noreferrer" className="social-link">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <a
+              href="https://github.com/Rihasha"
+              target="_blank"
+              rel="noreferrer"
+              className="social-link"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+              </svg>
               GitHub
             </a>
           </div>
@@ -186,8 +207,15 @@ export default function App() {
             <div className="about-badge-open">Open to work</div>
           </div>
           <div className="about-text">
-            <p>Hi, I'm <strong>Rihasha</strong> 👋 — a Motivated Python Full Stack Developer with hands-on experience in <strong>Python, FastAPI/Django,</strong> and <strong>React</strong>.</p>
-            <p>I'm skilled in building <strong>REST APIs</strong> and responsive web applications using HTML, CSS, and JavaScript. Proficient in <strong>SQL and MongoDB</strong> for efficient database management.</p>
+            <p>
+              Hi, I'm <strong>Rihasha</strong> 👋 — a Motivated Python Full Stack Developer
+              with hands-on experience in <strong>Python, FastAPI/Django,</strong> and <strong>React</strong>.
+            </p>
+            <p>
+              I'm skilled in building <strong>REST APIs</strong> and responsive web applications
+              using HTML, CSS, and JavaScript. Proficient in <strong>SQL and MongoDB</strong> for
+              efficient database management.
+            </p>
             <p>🚀 Currently: Learning · Building · Improving</p>
             <div className="tech-chips">
               {["Python", "FastAPI", "Django", "React", "JavaScript", "SQL", "MongoDB", "HTML5", "CSS3", "Git"].map((t) => (
@@ -196,6 +224,7 @@ export default function App() {
             </div>
           </div>
         </div>
+
         <div className="skills-section" ref={skillsRef}>
           <div className="skills-label">Proficiency</div>
           <div className="skills-bars">
@@ -206,7 +235,10 @@ export default function App() {
                   <span>{level}%</span>
                 </div>
                 <div className="skill-track">
-                  <div className="skill-fill" style={{ width: animatedSkills ? `${level}%` : "0%" }} />
+                  <div
+                    className="skill-fill"
+                    style={{ width: animatedSkills ? `${level}%` : "0%" }}
+                  />
                 </div>
               </div>
             ))}
@@ -229,10 +261,29 @@ export default function App() {
               <h3 className="project-title">{p.title}</h3>
               <p className="project-desc">{p.desc}</p>
               <div className="project-tags">
-                {p.tags.map((t) => <span key={t} className="tag">{t}</span>)}
+                {p.tags.map((t) => (
+                  <span key={t} className="tag">{t}</span>
+                ))}
               </div>
               <div className="project-links">
-                <a href="https://github.com/Rihasha" target="_blank" rel="noreferrer" className="project-link">GitHub ↗</a>
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="project-link"
+                >
+                  GitHub ↗
+                </a>
+                {p.live && (
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-link"
+                  >
+                    Live Demo ↗
+                  </a>
+                )}
               </div>
             </div>
           ))}
@@ -246,7 +297,8 @@ export default function App() {
         <div className="contact-grid">
           <div className="contact-info">
             <p className="contact-intro">
-              I'm currently available for freelance work and full-time opportunities. Feel free to reach out!
+              I'm currently available for freelance work and full-time opportunities.
+              Feel free to reach out!
             </p>
             <div className="contact-details">
               <div className="contact-item">
@@ -254,4 +306,81 @@ export default function App() {
                 <a href="mailto:rihashafdo@gmail.com">rihashafdo@gmail.com</a>
               </div>
               <div className="contact-item">
-                <span
+                <span className="contact-icon">📍</span>
+                <span>Chennai, Tamil Nadu</span>
+              </div>
+              <div className="contact-item">
+                <span className="contact-icon">💼</span>
+                <a
+                  href="https://www.linkedin.com/in/rihasha-fdo-658b6329b"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn Profile ↗
+                </a>
+              </div>
+              <div className="contact-item">
+                <span className="contact-icon">🐙</span>
+                <a
+                  href="https://github.com/Rihasha"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub Profile ↗
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* ── CONTACT FORM ── */}
+          <form className="contact-form" ref={formRef} onSubmit={handleSend}>
+            <div className="form-row">
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <input
+              type="text"
+              name="title"
+              placeholder="Subject"
+              required
+            />
+            <textarea
+              rows="5"
+              name="message"
+              placeholder="Message"
+              required
+            />
+            <button
+              type="submit"
+              className="btn-send"
+              disabled={status === "sending"}
+            >
+              {status === "idle"    && "Send message →"}
+              {status === "sending" && "Sending…"}
+              {status === "sent"    && "Message sent! 🎉"}
+              {status === "error"   && "Failed — try again"}
+            </button>
+          </form>
+
+        </div>
+      </section>
+
+      {/* ── FOOTER ── */}
+      <footer className="footer">
+        <p>© 2026 Rihasha.</p>
+        <p className="footer-loc">Chennai, Tamil Nadu 🇮🇳</p>
+      </footer>
+
+    </div>
+  );
+}
